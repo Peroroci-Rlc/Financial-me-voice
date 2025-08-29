@@ -1,0 +1,6 @@
+python-telegram-bot==20.7
+SpeechRecognition==3.10.0
+pydub==0.25.1
+gspread==6.1.2
+google-auth==2.34.0
+google-auth-oauthlib==1.2.1
