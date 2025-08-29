@@ -1,0 +1,17 @@
+FROM python:3.11-slim
+
+# Install ffmpeg untuk pydub
+RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY bot.py .
+
+# Set zona waktu (opsional)
+ENV TZ=Asia/Jakarta
+ENV FFMPEG_PATH=/usr/bin/ffmpeg
+# TELEGRAM_TOKEN, USE_SHEETS, SHEET_ID, GOOGLE_SERVICE_ACCOUNT_JSON di-set dari Railway
+
+CMD ["python", "bot.py"]
